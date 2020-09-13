@@ -1,3 +1,9 @@
+/**
+ * TODO:
+ *  - On startup; add all channels named "Temporary channel" to the list
+ *  - Maybe before that; make the channel name something from config.json
+ */
+
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require('./config.json');
@@ -72,7 +78,7 @@ function CreateChannel(message, args) {
 // Check all temporary channels and delete them if they're emtpy
 function deleteEmptyChannels() {
     temporaryChannels.forEach(vc => {
-        if (vc.members.array.length <= 0) {
+        if (vc.members.size <= 0) {
             vc.delete()
                 .then(() => {
                     console.log("Temporary channel deleted!");

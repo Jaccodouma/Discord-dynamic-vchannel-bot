@@ -41,6 +41,7 @@ function CreateChannel(message, args) {
     // Find number of users in args and check whether it's actually a number :p 
     let users = args[0];
     if (isNaN(users)) return message.reply("You need to let me know how many users you want, man!");
+    if (users > 99) users = 99;
 
     // Find channel category
     let category = message.guild.channels.resolve(config.channelCategory);

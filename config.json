@@ -1,0 +1,7 @@
+{ 
+    "discordKey"  : "[REPLACE THIS]",
+    "activityString" : "Activity string (:",
+    "prefix" : "oi",
+    "channelCategory" : "[REPLACE THIS]",
+    "secondsToJoin" : 30
+}

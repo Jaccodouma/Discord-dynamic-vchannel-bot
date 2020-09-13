@@ -1,7 +1,8 @@
 { 
     "discordKey"  : "[REPLACE THIS]",
-    "activityString" : "Activity string (:",
+    "activityString" : "type 'oi vc [number]' to make a channel (:",
     "prefix" : "oi",
     "channelCategory" : "[REPLACE THIS]",
-    "secondsToJoin" : 30
+    "secondsToJoin" : 30,
+    "temporaryChannelName" : "Temporary channel"
 }

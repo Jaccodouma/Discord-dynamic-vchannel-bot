@@ -1,7 +1,6 @@
 /**
  * TODO:
  *  - On startup; add all channels named "Temporary channel" to the list
- *  - Maybe before that; make the channel name something from config.json
  */
 
 const Discord = require("discord.js");
@@ -57,7 +56,7 @@ function CreateChannel(message, args) {
 
     // Create channel 
     message.guild.channels.create(
-        "Temporary channel", 
+        config.temporaryChannelName, 
         {
             type: 'voice',
             parent: category,

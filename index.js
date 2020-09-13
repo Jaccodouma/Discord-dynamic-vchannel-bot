@@ -1,23 +1,24 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require('./config.json');
-const { scheduleJob } = require("node-schedule");
+const schedule = require('node-schedule');
 
 client.login(config.discordKey);
 
 client.on("ready", () => {
-    console.log(`Bot has started! Invite link: https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot`);
+    console.log(`Bot has started! Invite link: https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=16`);
     client.user.setActivity(config.activityString);
 
     // Schedule the 'delete empty channels' job every minute
     // I'd prefer checking this whenever someone leaves a vc but I can't find how (doesn't seem to be an event)
-    scheduleJob.scheduleJob('0 * * * * *', () => {
+    schedule.scheduleJob('0 * * * * *', () => {
         deleteEmptyChannels();
     });
 })
 
-client.on("message", () => {
+client.on("message", message => {
     // Handle messages
+    HandleCommand(message);
 })
 
 function HandleCommand(message) {
@@ -39,7 +40,7 @@ function CreateChannel(message, args) {
 
     // Find number of users in args and check whether it's actually a number :p 
     let users = args[0];
-    if (users.isNaN()) return message.reply("You need to let me know how many users you want, man!");
+    if (isNaN(users)) return message.reply("You need to let me know how many users you want, man!");
 
     // Find channel category
     let category = message.guild.channels.resolve(config.channelCategory);

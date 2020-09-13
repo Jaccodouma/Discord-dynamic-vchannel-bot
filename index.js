@@ -74,7 +74,12 @@ function deleteEmptyChannels() {
     temporaryChannels.forEach(vc => {
         if (vc.members.array.length <= 0) {
             vc.delete()
-                .then(console.log("Temporary channel deleted!"))
+                .then(() => {
+                    console.log("Temporary channel deleted!");
+                    
+                    // remove vc from temporaryChannels
+                    temporaryChannels = temporaryChannels.filter(channel => channel != vc);
+                })
                 .catch(console.error);
         }
     });
